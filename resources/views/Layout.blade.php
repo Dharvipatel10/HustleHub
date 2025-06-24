@@ -9,7 +9,11 @@
 </head>
 
 <body class="bg-gray-100">
-    <x-header></x-header>
+    <x-header />
+    @if(request()->is('/'))
+    <x-hero/>
+    <x-top-banner />
+    @endif
     <main class="container mx-auto p-4 mt-4">
         {{$slot}}
     </main>

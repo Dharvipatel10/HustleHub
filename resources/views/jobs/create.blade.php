@@ -22,7 +22,7 @@
                 
                     <x-inputs.text id="tags" name="tags" label="Tags (comma-separated)" placeholder="development, coding, java, python"/>
 
-                    <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{old('job_type')}}" :options="['Full-Time' =>'Full-Time', 'Part-Time' => 'Part-time', 'Contract' => 'Contract', 'Temporary' => 'Temporary', 'Volunteer' => 'Volunteer', 'On-Call' => 'On-Call']"/>
+                    <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{old('job_type')}}" :options="['full_time' =>'full_time', 'part_time' => 'part_time', 'contract' => 'contract', 'temporary' => 'temporary', 'Volunteer' => 'Volunteer', 'On-Call' => 'On-Call']"/>
                     
                     <x-inputs.select id="remote" name="remote" label="Remote" :options="[0 => 'No', 1 => 'Yes']"/>
 
@@ -42,7 +42,7 @@
                     
                     <x-inputs.text-area id="company_description" name="company_description" label="Company Description" placeholder="Enter Company Description"/>
 
-                    <x-inputs.text id="company_website" name="company_website" label="Company Website" placeholder="Enter Company Website"/>
+                    <x-inputs.text id="company_website" name="company_website" label="Company Website" type="url" placeholder="Enter Company Website"/>
 
                     <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" placeholder="Enter Contat Phone"/>
 

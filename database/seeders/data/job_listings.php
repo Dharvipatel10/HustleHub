@@ -193,7 +193,7 @@ return [
     "address" => "567 Tech Blvd",
     "city" => "Dallas",
     "state" => "TX",
-    "zipcode" => "75201",
+    "zip_code" => "75201",
     "contact_email" => "info@tecsolutions.com",
     "contact_phone" => "214-555-9876",
     "company_name" => "Tec Solutions",

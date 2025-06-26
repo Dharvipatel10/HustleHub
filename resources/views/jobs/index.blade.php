@@ -7,4 +7,5 @@
             <p>No jobs available at the moment.</p>
        @endforelse
     </div>
+    
 </x-layout>

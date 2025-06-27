@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Job; // Assuming you have a Job model
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
 {
@@ -29,7 +30,7 @@ class JobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
@@ -55,9 +56,19 @@ class JobController extends Controller
         //Hardcoded user Id
         $validatedData['user_id'] =1;
 
+        //check for image
+        if($request->hasFile('company_logo')){
+            //store the file and get path
+            $path = $request->file('company_logo')->store('logos', 'public');
+
+            //add path to validate data
+            $validatedData['company_logo'] = $path;
+        }
+
+       //submit to database 
        Job::create($validatedData);
 
-        return redirect()->route('jobs.index')->with('success!', 'Job listing created successfully.');
+        return redirect()->route('jobs.index')->with('success', 'Job listing created successfully!');
     }
 
     /**
@@ -87,8 +98,15 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): string
+    public function destroy(Job $job): RedirectResponse
     {
-        return 'Destroy';
+        //if logo then delee it.
+        if($job->company_logo){
+            Storage::delete('public/logos/' . $job->company_logo);
+        }
+
+        $job->delete();
+
+        return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
 }

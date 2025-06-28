@@ -7,10 +7,12 @@ use Illuminate\View\View;
 use App\Models\Job; // Assuming you have a Job model
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
     //@desc Show all job listings
     //route GET / jobs
     public function index(): View
@@ -78,15 +80,21 @@ class JobController extends Controller
 
     //@desc Show edit job form
     //route GET /jobs/{$id}/edit
-    public function edit(string $id): string
+    public function edit(Job $job): View
     {
-        return 'Edit';
+        //check if user is authorized
+        $this->authorize('update', $job);
+        
+        return view('jobs.edit')->with('job', $job);
     }
 
     //@desc Update job listings
     //route PUT / jobs/{$id}
     public function update(Request $request, Job $job): string
     {
+        //check if user is authorized
+        $this->authorize('update', $job);
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -109,7 +117,8 @@ class JobController extends Controller
         ]);
     
         //check for image
-        if ($request->hashFile('company_logo')){
+        if ($request->hasFile('company_logo')){
+
             //Delete old logo
             Storage::delete('public/logos/' . basename($job->company_logo));
 
@@ -123,13 +132,15 @@ class JobController extends Controller
         //submit to database 
         $job->update($validatedData);
 
-        return redirect()->route('jobs.index')->with('success', 'Job listing created successfully!');
+        return redirect()->route('jobs.index')->with('success', 'Job listing updated successfully!');
     }
 
     //@desc Delete a job listing
     //route DELETE / jobs/{$id}
     public function destroy(Job $job): RedirectResponse
     {
+        //check if user is authorized
+        $this->authorize('delete', $job);
         //if logo then delee it.
         if($job->company_logo){
             Storage::delete('public/logos/' . $job->company_logo);

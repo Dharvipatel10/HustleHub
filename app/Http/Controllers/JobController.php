@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use App\Models\Job; // Assuming you have a Job model
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -51,7 +52,7 @@ class JobController extends Controller
         ]);
     
         //Hardcoded user Id
-        $validatedData['user_id'] =1;
+        $validatedData['user_id'] = Auth::user()->id;
 
         //check for image
         if($request->hasFile('company_logo')){

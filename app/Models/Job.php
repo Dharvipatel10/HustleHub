@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Job extends Model
@@ -40,4 +41,11 @@ class Job extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //Relation to bookmarks
+    public function bookmarkedByUsers(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'job_user_bookmarks')->withTimestamps();
+    }
+
+
 }

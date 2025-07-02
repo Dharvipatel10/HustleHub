@@ -17,7 +17,7 @@ class JobController extends Controller
     //route GET / jobs
     public function index(): View
     {
-        $jobs = Job::all(); // Fetch all job listings from the database
+        $jobs = Job::latest()->paginate(9); // Fetch all job listings from the database
         return view('jobs.index')->with('jobs', $jobs);
     }
 

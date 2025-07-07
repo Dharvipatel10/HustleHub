@@ -25,8 +25,8 @@
             @endauth
         </nav>
         <button @click="open = !open"
-            //id="hamburger"
-            class="text-white md:hidden flex items-center">
+            id="hamburger"
+            class="text-white md:hidden flex items-center" aria-label="Open menu">
             <i class="fa fa-bars text-2xl"></i>
         </button>
     </div>

@@ -1,4 +1,4 @@
-@props(['id', 'name', 'label' => null])
+@props(['id', 'name', 'label' => null, 'required' => false])
 
 <div class="mb-4">
     @if($label)
@@ -6,7 +6,7 @@
         {{$label}}
     </label>
     @endif
-    <input
+    <input {{ $required ? 'required' : '' }}
         id="{{$id}}"
         type="file"
         name="{{$name}}"

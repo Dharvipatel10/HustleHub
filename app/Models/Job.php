@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Job extends Model
@@ -47,5 +48,8 @@ class Job extends Model
         return $this->belongsToMany(User::class, 'job_user_bookmarks')->withTimestamps();
     }
 
-
+    // Relation to applicants
+    public function applicants(): HasMany {
+        return $this->hasMany(Applicant::class);
+    }
 }

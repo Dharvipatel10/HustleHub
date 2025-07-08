@@ -11,13 +11,14 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\GeocodeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::resource('/jobs', JobController::class);
+Route::get('/jobs/search', [JobController::class, 'search'])->name('jobs.search');
 Route::resource('/jobs', JobController::class)->middleware('auth')->only(['create', 'edit', 'update', 'destroy']);
 Route::resource('/jobs', JobController::class)->except(['create', 'edit', 'update', 'destroy']);
 
@@ -44,3 +45,5 @@ Route::delete('/bookmarks/{job}', [BookmarkController::class, 'destroy'])->name(
 
 Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])->name('applicant.store')->middleware('auth');
 Route::delete('/applicants/{applicant}', [ApplicantController::class, 'destroy'])->name('applicant.destroy')->middleware('auth');
+
+Route::get('/geocode', [GeocodeController::class, 'geocode']);

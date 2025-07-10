@@ -59,7 +59,10 @@ DB_PASSWORD=
 
 SESSION_DRIVER=database
 QUEUE_CONNECTION=database
+```
 
-💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env. ```
+💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env.
 
 ## 🧠 Author
+Dharvi Patel
+🔗 [LinkedIn](www.linkedin.com/in/dharvi-patel10)

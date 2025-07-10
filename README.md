@@ -64,6 +64,6 @@ QUEUE_CONNECTION=database
 💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env.
 
 ## 🧠 Author
-**Dharvi Patel**
+**Dharvi Patel** 
 _M.Sc. Student, TU Chemnitz_
 🔗 [LinkedIn](www.linkedin.com/in/dharvi-patel10)

@@ -21,22 +21,22 @@
 | **Dev Tools**| Composer, Node.js, Artisan CLI, NPM                          |
 
 ## ⚙️ Installation
-### Clone the repository
-git clone https://github.com/your-username/jobsearch.git
-cd jobsearch
-### Install backend dependencies
-composer install
-### Install frontend dependencies
-npm install
-### Create environment file
-cp .env.example .env
-### Generate application key
-php artisan key:generate
-### Setup database
-php artisan migrate --seed
-### Run development servers
-php artisan serve
-npm run dev
+- ### Clone the repository
+        git clone https://github.com/your-username/jobsearch.git
+        cd jobsearch
+- ### Install backend dependencies
+        composer install
+- ### Install frontend dependencies
+        npm install
+- ### Create environment file
+        cp .env.example .env
+- ### Generate application key
+        php artisan key:generate
+- ### Setup database
+        php artisan migrate --seed
+- ### Run development servers
+        php artisan serve
+        npm run dev
 
 ## ⚙️ Environment Configuration
 
@@ -60,5 +60,6 @@ DB_PASSWORD=
 SESSION_DRIVER=database
 QUEUE_CONNECTION=database
 
-💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env.
+💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env. ```
 
+## 🧠 Author

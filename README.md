@@ -65,4 +65,5 @@ QUEUE_CONNECTION=database
 
 ## 🧠 Author
 Dharvi Patel
+M.Sc. Student, TU Chemnitz
 🔗 [LinkedIn](www.linkedin.com/in/dharvi-patel10)

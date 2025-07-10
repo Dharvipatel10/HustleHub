@@ -45,4 +45,20 @@ Copy the `.env.example` file and set up your environment variables:
 ```bash
 cp .env.example .env
 
+APP_NAME=JobSearch
+APP_ENV=local
+APP_KEY=base64:your_app_key_here
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=jobsearch
+DB_USERNAME=root
+DB_PASSWORD=
+
+SESSION_DRIVER=database
+QUEUE_CONNECTION=database
+
+💡 Use php artisan key:generate to generate the APP_KEY after setting up your .env.
 

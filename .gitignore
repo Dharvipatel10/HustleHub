@@ -19,6 +19,8 @@
 /storage/*.key
 /storage/pail
 /vendor
+/_theme_files
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/.phpunit.cache
